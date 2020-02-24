@@ -1,0 +1,43 @@
+---
+
+- name: Install common packages
+  apt:
+    name:
+      - git
+      - build-essential
+      - direnv
+      - sqlite3
+      - libsqlite3-dev
+      - zsh
+      - zsh-dev
+      - peco
+  become: yes
+  tags:
+    - initial
+
+- name: Make dev directory
+  file: path=~/dev state=directory
+  tags:
+    - initial
+
+- name: Make ~/.go directory
+  file: path=~/.go state=directory
+  tags:
+    - initial
+
+- name: chsh
+  shell: chsh -s /usr/bin/zsh wozozo
+  become: yes
+  tags:
+    - initial
+    - zsh
+
+# - name: Define EDITOR
+#   shell: echo "export EDITOR=vi" >> ~/.bashrc
+#   tags:
+#     - initial
+
+# - name: Setup direnv scripts
+#   shell: echo "export PATH=$HOME/.config/composer/vendor/bin/:$PATH" >> ~/.bashrc
+#   tags:
+#     - initial

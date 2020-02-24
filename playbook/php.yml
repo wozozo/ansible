@@ -1,0 +1,25 @@
+---
+
+- name: Install PHP packages
+  apt:
+    name:
+      - php7.3
+      - php7.3-cli
+      - php7.3-curl
+      - php7.3-dev
+      - php7.3-intl
+      - php7.3-json
+      - php7.3-mbstring
+      - php7.3-readline
+      - php7.3-sqlite3
+      - php7.3-zip
+      - composer
+  become: yes
+  tags:
+    - php
+
+- name: Install Laravel from composer
+  shell: composer global require laravel/installer
+  tags:
+    - php
+    - laravel

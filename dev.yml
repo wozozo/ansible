@@ -1,0 +1,11 @@
+---
+- hosts: all
+  tasks:
+    - include: playbook/common.yml
+    - include: playbook/profiles.yml
+    - include: playbook/python.yml
+    - include: playbook/php.yml
+    - include: playbook/go.yml
+    - include: playbook/nodejs.yml
+    - include: playbook/nodejs.yml
+    - include: playbook/tools.yml

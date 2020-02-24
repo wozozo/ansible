@@ -1,0 +1,9 @@
+---
+
+- name: Install ghq
+  shell: /usr/local/go/bin/go get github.com/x-motemen/ghq
+  environment:
+    GOROOT: /usr/local/go
+    GOPATH: /home/wozozo/.go
+  tags:
+    - tools

@@ -1,0 +1,15 @@
+---
+
+- name: Fetch profiles from GitHub
+  git:
+    repo: git@github.com:wozozo/profiles.git
+    dest: ~/.profiles
+  tags:
+    - profiles
+
+- name: Setup profiles
+  shell:
+    cmd: ./setup --replace
+    chdir: ~/.profiles
+  tags:
+    - profiles
