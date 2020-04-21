@@ -9,3 +9,4 @@
     - include: playbook/nodejs.yml
     - include: playbook/nodejs.yml
     - include: playbook/tools.yml
+    - include: playbook/docker.yml

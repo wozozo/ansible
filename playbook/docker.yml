@@ -1,0 +1,79 @@
+---
+
+- name: Install docker
+  apt:
+    name:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - gnupg2
+      - software-properties-common
+  become: yes
+  tags:
+    - initial
+    - docker
+
+- name: Add GPG key
+  shell: curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+  become: yes
+  tags:
+    - initial
+    - docker
+
+- name: add-apt-repository
+  shell: add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
+  become: yes
+  tags:
+    - initial
+    - docker
+
+- name: apt update
+  shell: apt update
+  become: yes
+  tags:
+    - initial
+    - docker
+
+- name: apt-cache policy docker-ce
+  shell: apt-cache policy docker-ce
+  become: yes
+  tags:
+    - initial
+    - docker
+
+- name: Install docker
+  apt:
+    name:
+      - docker-ce
+  become: yes
+  tags:
+    - initial
+    - docker
+
+- name: systemctl status docker
+  shell: systemctl status docker
+  become: yes
+  tags:
+    - initial
+    - docker
+
+- name: usermod -aG docker
+  shell: usermod -aG docker wozozo
+  become: yes
+  tags:
+    - initial
+    - docker
+
+- name: Download docker-compose
+  shell: curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+  become: yes
+  tags:
+    - initial
+    - docker
+
+- name: chmod +x docker-compose
+  shell: chmod +x /usr/local/bin/docker-compose
+  become: yes
+  tags:
+    - initial
+    - docker

@@ -13,6 +13,9 @@
       - php7.3-readline
       - php7.3-sqlite3
       - php7.3-zip
+      - php-imagick
+      - php-redis
+      - php-gd
       - composer
   become: yes
   tags:
