@@ -12,6 +12,12 @@
       - zsh-dev
       - peco
       - lsof
+      - zlib1g-dev
+      - openssl
+      - libssl-dev
+      - libbz2-dev
+      - libreadline-dev
+      - libffi-dev
   become: yes
   tags:
     - initial
